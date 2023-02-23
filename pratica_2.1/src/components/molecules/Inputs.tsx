@@ -1,3 +1,5 @@
+import { useState } from "react"
+import { useSelector } from "react-redux"
 import styled from "styled-components"
 import store from "../../store"
 import { decrementWalletValue, incrementWalletValue } from "../../store/wallet/actions"
@@ -8,19 +10,54 @@ const ButtonsArea = styled.div`
   gap: 20px;
 `
 
+const InputStyle = styled.input`
+    border-radius: 20px;
+    padding: 10px;
+`
+
 const Inputs = () => {
+    const [current, setCurrent] = useState("")
+
+    const walletBalanceCurrent = useSelector((state: any) => state.wallet)
+
+    const handleChange = (e: any) => {
+        if (e.target.value) {
+            setCurrent(e.target.value)
+        }
+    }
+
+    const Validation = (value: any) => {
+        if (value && parseFloat(value) > 0) {
+            return true
+        } else {
+            alert("Informe um valor válido e acima de 0!")
+            return false
+        }
+    }
+
     const incrementHandler = () => {
-        store.dispatch(incrementWalletValue(10))
+        if (Validation(current)) {
+            store.dispatch(incrementWalletValue(parseFloat(current)))
+        }
+        setCurrent("")
     }
 
     const decrementHandler = () => {
-        store.dispatch(decrementWalletValue(10))
+        if (Validation(current)) {
+            if (walletBalanceCurrent > parseFloat(current)) {
+                store.dispatch(decrementWalletValue(parseFloat(current)))
+            } else {
+                alert("Saldo indisponivel!")
+            }
+        }
+        setCurrent("")
     }
-    
+
     return (
         <ButtonsArea>
-            <Button btnId="btnDepositar" action={incrementHandler}>+10</Button>
-            <Button btnId="btnSacar" action={decrementHandler}>-10</Button>
+            <Button btnId="btnDepositar" action={incrementHandler}>Depositar</Button>
+            <InputStyle type="number" onChange={handleChange} value={current} placeholder="Informe a quantia..." />
+            <Button btnId="btnSacar" action={decrementHandler}>Sacar</Button>
         </ButtonsArea>
     )
 }

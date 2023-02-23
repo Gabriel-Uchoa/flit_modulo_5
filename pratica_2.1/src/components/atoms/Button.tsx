@@ -3,7 +3,7 @@ import styled from "styled-components"
 const Button = (props: iInput) => {
     const ButtonStyle = styled.button`
        background-color: ${props.btnId === "btnSacar" ? "#ff0000" : props.btnId === "btnDepositar" ? "#008000" : "gray"};
-       padding: 20px 50px;
+       padding: 10px 30px;
        border-radius: 20px;
        border: none;
        cursor: pointer;

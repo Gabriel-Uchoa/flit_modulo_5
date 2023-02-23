@@ -14,7 +14,6 @@ const Container = styled.div`
 `
 function App() {
   const theme = useSelector((state: any) => state.theme)
-  console.log(theme.isDark)
   return (
     <ThemeProvider theme={theme.isDark ? darkTheme : lightTheme}>
       <Container className="App">
