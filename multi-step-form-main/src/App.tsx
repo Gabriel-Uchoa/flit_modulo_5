@@ -1,11 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import FormPage from "./pages/FormPage"
 
 function App() {
   return (
-    <div className="App">
-      Multi Step
-    </div>
+    <FormPage/>
   )
 }
 
