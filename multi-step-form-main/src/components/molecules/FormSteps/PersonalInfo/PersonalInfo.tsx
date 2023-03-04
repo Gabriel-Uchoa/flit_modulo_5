@@ -1,7 +1,11 @@
 import { useFormik } from "formik";
-import Button from "../../atoms/Button"
-import FormField from "../../atoms/FormField";
-import { Form, FormDescribe, FormStepStyle, Subtitle, Title } from "./StyleFormStep"
+import store from "../../../../store";
+import { nextStep } from "../../../../store/MultiStepForm/action";
+import Button from "../../../atoms/Button"
+import FormField from "../../../atoms/FormField";
+import Describe from "../comuns/Describe";
+import { ButtonsAreaOne, FormStepStyle } from "../comuns/StyleComuns";
+import { Form } from "./StylePersonalInfo"
 
 interface Errors {
     name?: string;
@@ -9,7 +13,7 @@ interface Errors {
     phone?: string;
 }
 
-const FormStep = () => {
+const PersonalInfo = () => {
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -36,12 +40,17 @@ const FormStep = () => {
         },
     });
 
+    const handleClick = () => {
+        store.dispatch(nextStep(1))
+
+    }
+
     return (
         <FormStepStyle>
-            <FormDescribe>
-                <Title>Personal Info</Title>
-                <Subtitle>Please provide your name, email adress, and phone number.</Subtitle>
-            </FormDescribe>
+            <Describe
+                title="Personal Info"
+                subtitle="Please provide your name, email adress, and phone number."
+            />
             <Form onSubmit={formik.handleSubmit}>
                 <FormField
                     label="Name"
@@ -69,13 +78,12 @@ const FormStep = () => {
                 />
             </Form>
 
-            <div>
-                <Button type="back" action={(e) => { console.log(e) }} text="Go Back" />
-                <Button type="next" action={(e) => { console.log(e) }} text="Next Step" />
-            </div>
+            <ButtonsAreaOne>
+                <Button type="next" action={handleClick} text="Next Step" />
+            </ButtonsAreaOne>
 
         </FormStepStyle>
     )
 }
 
-export default FormStep
+export default PersonalInfo
