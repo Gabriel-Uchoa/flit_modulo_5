@@ -6,5 +6,5 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${props => props.theme.palette.primary.light_blue};
+    background-color: ${props => props.theme.palette.neutral.magnolia};
 `

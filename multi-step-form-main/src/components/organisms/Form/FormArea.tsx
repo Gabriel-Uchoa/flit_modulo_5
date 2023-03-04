@@ -1,3 +1,4 @@
+import FormStep from "../../molecules/FormStep/FormStep"
 import Step from "../../molecules/Step/Step"
 import { Container, StepsForms, StepsSection } from "./StyleFormArea"
 const FormArea = () => {
@@ -10,7 +11,7 @@ const FormArea = () => {
                 <Step currentStep={4} title="STEP 4" subtitle="SUMMARY" />
             </StepsSection>
             <StepsForms>
-                forms
+                <FormStep/>
             </StepsForms>
         </Container>
     )
