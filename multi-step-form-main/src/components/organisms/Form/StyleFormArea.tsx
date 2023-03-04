@@ -12,10 +12,11 @@ export const Container = styled.div`
 
 export const StepsSection = styled.section`
     display: flex;
-    flex-grow:0.6;
+
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 30px;
+    margin-right: 20px;
     gap: 20px;
     border-radius: 10px;
     background-image: url("src/components/assets/images/bg-sidebar-desktop.svg");

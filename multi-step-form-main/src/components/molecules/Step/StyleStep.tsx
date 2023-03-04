@@ -12,6 +12,7 @@ export const CurrentStep = styled.div`
     justify-content: center;
     align-items: center;
     font-size: medium;
+    font-weight: bold;
     border: 1px solid ${props => props.theme.palette.neutral.white};
     width: 30px;
     height: 30px;
