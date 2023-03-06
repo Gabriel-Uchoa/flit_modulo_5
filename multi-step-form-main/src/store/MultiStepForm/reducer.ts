@@ -28,6 +28,11 @@ const multiStepFormReducer = (state = MULTI_STEP_INITIAL_STATE, action: any) => 
                 ...state,
                 personal_info: action.payload,
             }
+        case 'ADD_PLAN':
+            return {
+                ...state,
+                plan: action.payload,
+            }
         case 'NEXT_STEP':
             return {
                 ...state,

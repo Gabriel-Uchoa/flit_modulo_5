@@ -18,3 +18,8 @@ export const ButtonsArea = styled.div`
 export const ButtonsAreaOne = styled(ButtonsArea)`
     justify-content: flex-end;
 `
+export const FormStyle = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`
