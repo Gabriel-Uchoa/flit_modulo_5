@@ -25,3 +25,9 @@ export const addPersonalInfo = (value: any)=>{
         payload: value
     }
 }
+export const addPlan = (value: any)=>{
+    return {
+        type: 'ADD_PLAN',
+        payload: value
+    }
+}

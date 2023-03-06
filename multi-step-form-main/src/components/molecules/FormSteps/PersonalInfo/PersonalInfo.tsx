@@ -2,8 +2,7 @@ import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { addPersonalInfo, nextStep } from "../../../../store/MultiStepForm/action";
 import { iStore } from "../../../../types/store.interface";
-import { ButtonsAreaOne, FormStepStyle } from "../comuns/StyleComuns";
-import { FormStyle } from "./StylePersonalInfo"
+import { ButtonsAreaOne, FormStepStyle, FormStyle } from "../comuns/StyleComuns";
 import store from "../../../../store";
 import Button from "../../../atoms/Button"
 import FormField from "../../../atoms/FormField";

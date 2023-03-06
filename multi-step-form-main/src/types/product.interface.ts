@@ -3,7 +3,8 @@ export interface Plan {
     name_plan: string,
     value_plan: number,
     cobrance: string,
-    free_period: string,
+    free_period?: string,
+    className?: string,
 }
 
 export interface Personal_info {
