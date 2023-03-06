@@ -18,3 +18,10 @@ export const confirm = (value: any)=>{
         payload: value
     }
 }
+
+export const addPersonalInfo = (value: any)=>{
+    return {
+        type: 'ADD_PERSONAL_INFO',
+        payload: value
+    }
+}

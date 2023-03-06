@@ -1,27 +1,12 @@
 import { useSelector } from "react-redux"
 import { iStore } from "../../../types/store.interface"
-import Finishing from "../../molecules/FormSteps/Finishing/Finishing"
-import PersonalInfo from "../../molecules/FormSteps/PersonalInfo/PersonalInfo"
-import PickAddOns from "../../molecules/FormSteps/PickAddOns/PickAddOns"
-import SelectPlan from "../../molecules/FormSteps/SelectPlan/SelectPlan"
+import renderStep from "../../molecules/FormSteps"
 import Step from "../../molecules/Step/Step"
 import { Container, StepsForms, StepsSection } from "./StyleFormArea"
 
-function renderStep(step: number) {
-    switch (step) {
-        case 1:
-            return <PersonalInfo />
-        case 2:
-            return <SelectPlan />
-        case 3:
-            return <PickAddOns />
-        case 4:
-            return <Finishing />
-    }
-}
-
 const FormArea = () => {
     const FormStep: iStore = useSelector((state: any) => state.multiStep)
+
     return (
         <Container>
             <StepsSection>

@@ -23,10 +23,14 @@ const MULTI_STEP_INITIAL_STATE: iStore = {
 
 const multiStepFormReducer = (state = MULTI_STEP_INITIAL_STATE, action: any) => {
     switch (action.type) {
+        case 'ADD_PERSONAL_INFO':
+            return {
+                ...state,
+                personal_info: action.payload,
+            }
         case 'NEXT_STEP':
             return {
                 ...state,
-                personal_info: [state.personal_info, action.payload],
                 step: state.step + 1,
             }
         case 'BACK_STEP':
