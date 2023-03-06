@@ -1,49 +1,34 @@
 import { useFormik } from "formik";
+import { useSelector } from "react-redux";
+import { addPersonalInfo, nextStep } from "../../../../store/MultiStepForm/action";
+import { iStore } from "../../../../types/store.interface";
+import { ButtonsAreaOne, FormStepStyle } from "../comuns/StyleComuns";
+import { FormStyle } from "./StylePersonalInfo"
 import store from "../../../../store";
-import { nextStep } from "../../../../store/MultiStepForm/action";
 import Button from "../../../atoms/Button"
 import FormField from "../../../atoms/FormField";
 import Describe from "../comuns/Describe";
-import { ButtonsAreaOne, FormStepStyle } from "../comuns/StyleComuns";
-import { Form } from "./StylePersonalInfo"
-
-interface Errors {
-    name?: string;
-    email?: string;
-    phone?: string;
-}
+import * as yup from "yup";
 
 const PersonalInfo = () => {
+    const FormStep: iStore = useSelector((state: any) => state.multiStep)
+
     const formik = useFormik({
         initialValues: {
-            name: "",
-            email: "",
-            phone: "",
+            name: FormStep.personal_info.name,
+            email: FormStep.personal_info.email,
+            phone: FormStep.personal_info.phone,
         },
+        validationSchema: yup.object({
+            name: yup.string().required("This field is required"),
+            email: yup.string().email("This email is invalid.").required("This field is required"),
+            phone: yup.string().required("This field is required")
+        }),
         onSubmit: (values) => {
-            console.log(values)
-        },
-        validate: (values) => {
-            const errors: Errors = {};
-
-            if (!values.name) {
-                errors.name = "This field is required";
-            }
-            if (!values.email) {
-                errors.email = "This field is required";
-            }
-            if (!values.phone) {
-                errors.phone = "This field is required";
-            }
-
-            return errors;
+            store.dispatch(addPersonalInfo(values))
+            store.dispatch(nextStep(1))
         },
     });
-
-    const handleClick = () => {
-        store.dispatch(nextStep(1))
-
-    }
 
     return (
         <FormStepStyle>
@@ -51,7 +36,7 @@ const PersonalInfo = () => {
                 title="Personal Info"
                 subtitle="Please provide your name, email adress, and phone number."
             />
-            <Form onSubmit={formik.handleSubmit}>
+            <FormStyle onSubmit={formik.handleSubmit} >
                 <FormField
                     label="Name"
                     name="name"
@@ -76,10 +61,10 @@ const PersonalInfo = () => {
                     value={formik.values.phone}
                     error={formik.errors.phone}
                 />
-            </Form>
+            </FormStyle>
 
             <ButtonsAreaOne>
-                <Button type="next" action={handleClick} text="Next Step" />
+                <Button type="next" action={formik.submitForm} text="Next Step" />
             </ButtonsAreaOne>
 
         </FormStepStyle>

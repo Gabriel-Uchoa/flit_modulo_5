@@ -39,11 +39,11 @@ const FormFieldStyle = styled.div`
 `
 
 const FormField = (props: Field) => {
-    
+
     return (
         <FormFieldStyle>
             <label htmlFor={props.name}>{props.label} <ErrorMensage>{props.error}</ErrorMensage></label>
-           
+
             <input
                 name={props.name}
                 type="text"
