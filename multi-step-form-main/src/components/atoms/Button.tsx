@@ -39,7 +39,7 @@ const ButtonStyle = styled.button`
         border: none;
 `
 
-const Button: React.FC<{ action: React.MouseEventHandler<HTMLButtonElement>, text: string, type: string, id?: string, className?: string }> = (props) => {
+const Button: React.FC<{ action?: React.MouseEventHandler<HTMLButtonElement>, text: string, type: string, id?: string, className?: string }> = (props) => {
     
     const ButtonStyleReact = styled(ButtonStyle)`
         color: ${handleColorType(props.type, false)};

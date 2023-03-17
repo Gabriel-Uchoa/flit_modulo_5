@@ -4,7 +4,6 @@ export interface Plan {
     value_plan: number,
     cobrance: string,
     free_period?: string,
-    className?: string,
 }
 
 export interface Personal_info {
@@ -13,7 +12,7 @@ export interface Personal_info {
     phone: string
 }
 
-export interface AddOns {
+export interface iAddOns {
     name_plan: string,
     describe_plan: string,
     value_plan: number,
@@ -21,7 +20,6 @@ export interface AddOns {
 
 export interface Summary {
     personal_info: Personal_info,
-    step: number,
     plan: Plan,
-    addOns: Array<AddOns>,
+    addOns: Array<iAddOns>,
 }

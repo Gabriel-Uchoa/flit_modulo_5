@@ -23,3 +23,13 @@ export const FormStyle = styled.form`
     flex-direction: column;
     width: 100%;
 `
+export const CardArea = styled.div`
+    display: flex;
+    gap: 20px;
+`
+
+export const AddOnsArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+`

@@ -63,7 +63,7 @@ const PersonalInfo = () => {
             </FormStyle>
 
             <ButtonsAreaOne>
-                <Button type="next" action={formik.submitForm} text="Next Step" />
+                <Button type="next" text="Next Step" />
             </ButtonsAreaOne>
 
         </FormStepStyle>
