@@ -2,21 +2,26 @@ import store from "../../../../store"
 import { backStep, nextStep } from "../../../../store/MultiStepForm/action"
 import Button from "../../../atoms/Button"
 import Describe from "../comuns/Describe"
-import { ButtonsArea, FormStepStyle, FormStyle } from "../comuns/StyleComuns"
+import { ButtonsArea, CardArea, FormStepStyle, FormStyle } from "../comuns/StyleComuns"
 import CardPlan from "../../CardPlan/CardPlan"
 import styled from "styled-components"
+import ToggleSwitch from "../../../atoms/ToggleSwitch"
+import { ChangeEvent, useState } from "react"
 
 const SelectPlan = () => {
+    const [checked, setChecked] = useState(false);
     const handleClickBack = () => {
         store.dispatch(backStep(1))
     }
     const handleClickNext = () => {
         store.dispatch(nextStep(1))
     }
-    const CardArea = styled.div`
-        display: flex;
-        gap: 20px;
-    `
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setChecked(e.target.checked);
+    };
+
+
     return (
         <FormStepStyle>
             <Describe
@@ -28,26 +33,28 @@ const SelectPlan = () => {
                     <CardPlan
                         icon_plan="src/components/assets/images/icon-arcade.svg"
                         name_plan="Arcade"
-                        cobrance="mo"
+                        cobrance={checked ? "yr" : "mo"}
+                        free_period={checked ? "2 months free" : ""}
                         value_plan={9}
-                        className="plan"
                     />
                     <CardPlan
                         icon_plan="src/components/assets/images/icon-advanced.svg"
                         name_plan="Advanced"
-                        cobrance="mo"
+                        cobrance={checked ? "yr" : "mo"}
+                        free_period={checked ? "2 months free" : ""}
                         value_plan={12}
-                        className="plan"
                     />
                     <CardPlan
                         icon_plan="src/components/assets/images/icon-pro.svg"
                         name_plan="Pro"
-                        cobrance="mo"
+                        cobrance={checked ? "yr" : "mo"}
+                        free_period={checked ? "2 months free" : ""}
                         value_plan={15}
-                        className="plan"
                     />
                 </CardArea>
             </FormStyle>
+
+            <ToggleSwitch checked={checked} handleChange={handleChange} />
 
             <ButtonsArea>
                 <Button type="back" action={handleClickBack} text="Go Back" />
